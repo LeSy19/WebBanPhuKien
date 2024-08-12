@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+
+		<div class="row mt-3 bg-body-tertiary">
+			<img th:src="@{|/assets/images/${item.image}|}" alt=""
+				class="col-sm-6">
+
+			<div class="col-sm-6">
+				<ul>
+					<h3 class="mt-4 fw-bold">[[${item.name}]]</h3>
+					<h6>[[${item.category.name}]]</h6>
+					<h5>[[${item.price}]]</h5>
+					<h5>[[${item.createDate}]]</h5>
+					<div class="row justify-content-center" style="margin-top: 200px;">
+						<button type="button" class="btn btn-secondary"
+							style="width: 350px; height: 45px;">
+							<i class="bi bi-cart-plus-fill"></i> THÊM VÀO GIỎ HÀNG
+						</button>
+					</div>
+				</ul>
+			</div>
+		</div>
+		
+		<!-- Related Products Carousel -->
+		
+    <div id="relatedProductsCarousel" class="carousel slide mt-5 mb-5" data-bs-ride="carousel">
+    <h4>SẢN PHẨM LIÊN QUAN</h4>
+      <div class="carousel-inner">
+          <div class="row">
+             <div th:each="p, iterStat : ${item.category.products}" th:if="${iterStat.index < 4}" class="col-md-3">
+              <div class="card">
+                <a th:href="@{|/product/detail/${p.id}|}"> <img
+						th:src="@{|/assets/images/${p.image}|}" class="product-image">
+					</a>
+                <div class="card-body">
+                  <h5 class="card-title" th:text="${p.name}"></h5>
+                  <p class="card-text" th:text="${p.price}"></p>
+                  <a  class="btn btn-primary">Thêm vào giỏ hàng</a>
+                </div>
+              </div>
+                      </div>
+        
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#relatedProductsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#relatedProductsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+	</main>
+
+
+</body>
+
+</html>

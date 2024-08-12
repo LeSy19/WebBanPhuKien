@@ -1,0 +1,68 @@
+
+<div class="container mt-5">
+	<div class="card">
+		<div class="card-header">
+			<h2>Product Edition</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-4 text-center">
+					<label for="image"> <img
+						ng-src="{{'/assets/images/' + form.image}}" " class="img-fluid"
+						alt="Product Image">
+					</label>
+				</div>
+				<div class="col-md-8">
+					<div class="form-group row mt-3">
+						<div class="col-md-6">
+							<label for="productName">Name</label> <input ng-model="form.name"
+								class="form-control" id="productName">
+						</div>
+						<div class="col-md-6">
+							<label for="productPrice">Price</label> <input
+								ng-model="form.price" class="form-control" id="productPrice">
+						</div>
+					</div>
+					<div class="form-group row mt-3">
+						<div class="col-md-6">
+							<label for="productImage">Image</label> <input type="file"
+								class="form-control" id="image"
+								onchange="angular.element(this).scope().imageChanged(this.files)">
+						</div>
+						<div class="col-md-6">
+							<label>Category</label> <select ng-model="form.category.id"
+								class="form-control">
+								<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row mt-3">
+						<div class="col-md-6">
+							<label for="createDate">Create Date</label> <input
+								ng-model="form.createDate" type="date" class="form-control"
+								id="createDate">
+						</div>
+						<div class="col-md-6">
+							<label>Available</label>s
+							<div class="form-control">
+								<label class="radio-inline"> <input
+									ng-model="form.available" type="radio" ng-value="true"
+									name="available"> Yes
+								</label> <label class="radio-inline"> <input
+									ng-model="form.available" type="radio" ng-value="false"
+									name="available"> No
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer mx-auto mt-2">
+			<button type="button" ng-click="create()" class="btn btn-primary">Create</button>
+			<button type="button" ng-click="update()" class="btn btn-success">Update</button>
+			<button type="button" ng-click="delete(form)" class="btn btn-danger">Delete</button>
+			<button type="button" ng-click="reset()" class="btn btn-secondary">Reset</button>
+		</div>
+	</div>
+</div>

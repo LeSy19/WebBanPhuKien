@@ -1,0 +1,8 @@
+<div class="bg-white p-4 rounded shadow-sm">
+        <h5 class="border-bottom pb-2 mb-4 text-primary">Danh mục sản phẩm</h5>
+        <ul class="list-unstyled">
+                <li><a th:each="c:${cates}" th:href="@{|/product/list?cid=${c.id}|}"
+                                class="d-block p-3 mb-2 rounded text-decoration-none text-dark border border-1 border-light hover-shadow">[[${c.name}]]</a></li>
+                
+        </ul>
+</div>

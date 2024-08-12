@@ -1,0 +1,12 @@
+.col-sm-6 {
+    display: flex;
+    flex-direction: column;
+}
+
+.col-sm-6 > div:first-of-type {
+    flex: 1; /* This makes the first div take up available space */
+}
+
+.row.justify-content-center.mt-3 {
+    margin-bottom: 100px; /* Push the button to the bottom */
+}

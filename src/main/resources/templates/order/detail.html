@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+    
+    <body>
+      <main th:object="${order}">
+      <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>THÔNG TIN ĐƠN HÀNG</h2>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="orderNumber" class="form-label">Số điện thoại:</label>
+                                <input class="form-control" id="orderNumber" th:field="*{id}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="purchaser" class="form-label">Người đặt:</label>
+                                <input class="form-control" id="purchaser" th:field="*{account.username}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="purchaseDate" class="form-label">Ngày đặt hàng:</label>
+                                <input class="form-control" id="purchaseDate" th:field="*{createDate}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="shippingAddress" class="form-label">Địa chỉ:</label>
+                        <textarea id="shippingAddress" class="form-control" th:field="*{address}" readonly></textarea>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h2>Sản phẩm</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="detail: *{orderDetails}" th:object="${detail}">
+                        <td>[[*{product.id}]]</td>
+                        <td>[[*{product.name}]]</td>
+                        <td>$[[*{#numbers.formatDecimal(price, 0, 'COMMA', 2, 'POINT')}]]</td>
+                        <td>[[*{quantity}]]</td>
+                        <td>$[[*{#numbers.formatDecimal(price*quantity, 0, 'COMMA', 2, 'POINT')}]]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+      </main>
+    </body>
+</html>

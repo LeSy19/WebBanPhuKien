@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>Product List</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                        <th>Image</th>
+                        <th>Category</th>
+                        <th>Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example row -->
+                    <tr ng-repeat="item in pager.items">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.price | number : 2}}</td>
+                        <td>{{item.createDate | date: 'dd-MM-yyyy'}}</td>
+                        <td>{{item.image}}</td>
+                        <td>{{item.category.name}}</td>
+                        <td>{{item.available ?'Yes':'No'}}</td>
+                        <td>
+                            <div class="btn-group btn-group-xs">
+                                <button ng-click="edit(item)" class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                <button ng-click="delete(item)" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+
+            </table>
+            <div class="card-footer text-center">
+                <button ng-click="pager.prev()" class="btn btn-primary"><i class="bi bi-arrow-left-square-fill"></i></button>
+                <button class="btn btn-success">{{pager.page + 1}} of {{pager.count}}</button>
+                <button ng-click="pager.next()" class="btn btn-danger"><i class="bi bi-arrow-right-square-fill"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

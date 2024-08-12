@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="edit-tab" data-bs-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="true">Product Edition</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="list-tab" data-bs-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">List of Products</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+            <!-- Content for Product Edition -->
+            <div ng-include="'/assets/admin/product/_form.html'"></div>
+            <!-- Add your form or content here -->
+        </div>
+        <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+            <!-- Content for List of Products -->
+            <div ng-include="'/assets/admin/product/_table.html'"></div>
+            <!-- Add your table or content here -->
+        </div>
+    </div>
+</div>

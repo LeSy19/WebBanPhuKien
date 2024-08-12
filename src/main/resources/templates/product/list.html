@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<div class="row">
+			<div th:each="p:${items}" class="col-md-4 mb-4">
+				<div class="product-card">
+					<a th:href="@{|/product/detail/${p.id}|}"> <img
+						th:src="@{|/assets/images/${p.image}|}" class="product-image">
+					</a>
+					<div class="product-info">
+						<h5 class="product-title">[[${p.name}]]</h5>
+						<p class="product-price">$[[${p.price}]]</p>
+					</div>
+					<div class="product-actions">
+						<button class="btn btn-primary" th:attr="ng-click=@{|cart.add(${p.id})|}">
+							<i class="bi bi-cart4"></i> Thêm vào giỏ hàng
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<li class="page-item"><a class="page-link" ng-click="pager.first()">First</a></li>
+				<li class="page-item"><a class="page-link" ng-click="pager.prev()">Previous</a></li>
+				<li class="page-item"><a class="page-link" ng-click="pager.next()">Next</a></li>
+				<li class="page-item"><a class="page-link" href="#">Last</a></li>
+			</ul>
+		</nav>
+	</main>
+</body>
+</html>
